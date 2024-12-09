@@ -1604,26 +1604,41 @@ public class Vehiculos extends javax.swing.JFrame {
     private void btnCancelarVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarVMouseClicked
        JVentas.dispose();
     }//GEN-LAST:event_btnCancelarVMouseClicked
-
-    private void btnAgregarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnAgregarKeyPressed
-        // TODO add your handling code here:
+    //TablaVehiculos
+    private void updateTablaVehiculos(){
+        contVeh.ActualizarVehiculos();
+        DefaultTableModel modelo = new DefaultTableModel();
+    
+        for(Vehiculo i: contVeh.getVehiculos()){
+            String [] actVal ={String.valueOf(i.getId_vehiculo()),i.getModelo(),i.getVariante(),String.valueOf(i.getAnio()),Double.toString(i.getPrecio_compra()),Long.toString(i.getKilometraje()),i.getTipo_gasolina(),Double.toString(i.getPrecio_venta())};
+            System.out.println(actVal);
+        }
+    }
+    
+    private void updateTablaTenencias(){
+        contVeh.ActualizarVehiculos();
+        DefaultTableModel modelo = new DefaultTableModel();
         
+        String [] cabecera = {"ID Vehiculo","Modelo","Tenencia"};
+        //COsas
+        for (String i : cabecera)
+            modelo.addColumn(i);
         
+        TablaTenencias.setModel(modelo);
+        for(Vehiculo i: contVeh.getVehiculos()){
+            String [] actVal ={String.valueOf(i.getId_vehiculo()),i.getModelo(),Boolean.toString(i.getTenencia())};
+            if(!i.getTenencia())
+                modelo.addRow(actVal);
+        }
         
-    }//GEN-LAST:event_btnAgregarKeyPressed
-
-    private void txtModeloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtModeloActionPerformed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_txtModeloActionPerformed
-
+    }
+    
     
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Windows".equals(info.getName())) {
