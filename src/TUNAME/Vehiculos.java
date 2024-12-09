@@ -1646,8 +1646,6 @@ public class Vehiculos extends javax.swing.JFrame {
         updateTablaTenencias();
     }
     
-<<<<<<< Updated upstream
-=======
 
     private void btnAgregarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnAgregarKeyPressed
         // TODO add your handling code here:
@@ -1666,7 +1664,6 @@ public class Vehiculos extends javax.swing.JFrame {
         btnCancelarVMouseClicked(evt);
     }//GEN-LAST:event_btnVentaAMouseClicked
 
->>>>>>> Stashed changes
     
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
