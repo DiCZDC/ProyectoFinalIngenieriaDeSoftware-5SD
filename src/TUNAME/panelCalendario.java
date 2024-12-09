@@ -108,7 +108,9 @@ public class panelCalendario extends javax.swing.JPanel {
         updateData();
 
         selFecha = new dialogoDia(null, true, fechaLocal.lengthOfMonth(),fechaLocal.getDayOfWeek().getValue()%7);
+        selFecha.setLocationRelativeTo(null);
         selFecha.setVisible(true);
+        
         fechaAct.setDate(selFecha.getDiaElegido());
         cboDia.setSelectedIndex(selFecha.getDiaElegido()-1);
         //lblDia.setText(selFecha.getDiaElegido()+"");
