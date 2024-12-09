@@ -6,9 +6,15 @@ import TUNAME.*;
 import CLASES.*;
 import Calculo.calculoISR;
 import java.awt.Color;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 
 /*
@@ -940,6 +946,11 @@ public class Vehiculos extends javax.swing.JFrame {
         btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/rental-car.png"))); // NOI18N
         btnAgregar.setText("  Agregar");
         btnAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAgregar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAgregarMouseClicked(evt);
+            }
+        });
         btnAgregar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 btnAgregarKeyPressed(evt);
@@ -964,6 +975,11 @@ public class Vehiculos extends javax.swing.JFrame {
         btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/mechanical.png"))); // NOI18N
         btnEditar.setText(" Editar");
         btnEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEditar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEditarMouseClicked(evt);
+            }
+        });
         jPanel2.add(btnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 370, 100, 60));
 
         pnCrudVehiculos.setBackground(new java.awt.Color(255, 255, 255));
@@ -1702,6 +1718,62 @@ public class Vehiculos extends javax.swing.JFrame {
         JOptionPane.showMessageDialog( null, "Venta completada correctamente");
         btnCancelarVMouseClicked(evt);
     }//GEN-LAST:event_btnVentaAMouseClicked
+    private void btnAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseClicked
+        // TODO add your handling code here:
+        String modelo = txtModelo.getText();
+        String variante = txtVariante.getText();
+        int anio = Integer.parseInt(txtAnio.getText());
+        double precio_compra = Double.parseDouble(txtPrecio_compra.getText());
+        long kilometraje = Long.parseLong(txtKilometraje.getText());
+        String tipo_gasolina = cboGasolina.getSelectedItem().toString();
+        double precio_venta = Double.parseDouble(txtPrecio_venta.getText());
+        
+        String fecha = ""+panelCalendario1.getDia() +"/"+panelCalendario1.getMes()+"/"+panelCalendario1.getAnio();
+        
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        Date fechaCompra;
+        try {
+            fechaCompra = formato.parse(fecha);
+        } catch (ParseException ex) {
+            Logger.getLogger(Vehiculos.class.getName()).log(Level.SEVERE, null, ex);
+            fechaCompra = null;
+        }
+        
+
+        boolean tenencia;
+        if (cboTenencia.getSelectedItem().toString().equals("Pagada"))
+            tenencia = true;
+        else
+            tenencia = false;
+        
+        
+        
+        
+        Vehiculo temp = new Vehiculo(1,modelo, variante, anio, precio_compra, kilometraje, tipo_gasolina, precio_venta, fechaCompra, tenencia);
+        contVeh.agregarVehiculo(temp);
+        updateTablaVehiculos();
+        
+    }//GEN-LAST:event_btnAgregarMouseClicked
+
+    private void btnEditarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarMouseClicked
+        // TODO add your handling code here:
+        int seleccion = TablaVehiculos.getSelectedRow();
+
+        Vehiculo ve = contVeh.getVehiculos().get(seleccion);
+        DefaultTableModel modelo =  (DefaultTableModel) TablaVehiculos.getModel();
+        ve.setModelo((String) modelo.getValueAt(seleccion, 1));
+        ve.setVariante((String) modelo.getValueAt(seleccion, 2));
+        ve.setAnio(Integer.parseInt((String)modelo.getValueAt(seleccion, 3)));
+        ve.setPrecio_compra(Double.parseDouble((String)modelo.getValueAt(seleccion, 4)) );
+        ve.setKilometraje(Long.parseLong((String)modelo.getValueAt(seleccion, 5)) );
+        ve.setTipo_gasolina((String) modelo.getValueAt(seleccion, 6));
+        ve.setPrecio_venta(Double.parseDouble((String)modelo.getValueAt(seleccion, 7)));
+
+        contVeh.editarVehiculo(ve);
+        updateTablaVehiculos();
+        
+        
+    }//GEN-LAST:event_btnEditarMouseClicked
 
     
     public static void main(String args[]) {
