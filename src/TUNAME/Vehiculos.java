@@ -1577,7 +1577,7 @@ public class Vehiculos extends javax.swing.JFrame {
     private void btnCancelarVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarVMouseClicked
        JVentas.dispose();
     }//GEN-LAST:event_btnCancelarVMouseClicked
-    
+    //TablaVehiculos
     private void updateTablaVehiculos(){
         contVeh.ActualizarVehiculos();
         DefaultTableModel modelo = new DefaultTableModel();
