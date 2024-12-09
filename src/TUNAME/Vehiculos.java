@@ -1601,7 +1601,7 @@ public class Vehiculos extends javax.swing.JFrame {
         DefaultTableModel modelo = new DefaultTableModel();
         
         String [] cabecera = {"ID Vehiculo","Modelo","Tenencia"};
-        
+        //COsas
         for (String i : cabecera)
             modelo.addColumn(i);
         
