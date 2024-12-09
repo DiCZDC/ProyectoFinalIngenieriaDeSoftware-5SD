@@ -130,7 +130,7 @@ public class controladorVehiculos {
             pstmt.setInt(1,id_vehiculo);
             ResultSet rs = pstmt.executeQuery();
             while(rs.next())
-                return rs.getObject("fecha_compra",Date.class);
+                return rs.getDate("fecha_compra");
             
         }catch (SQLException e) {
             e.printStackTrace();

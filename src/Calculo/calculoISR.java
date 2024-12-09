@@ -7,7 +7,9 @@ import java.util.concurrent.TimeUnit;
 
 public class calculoISR {
     Map<Integer, Double> INPCAnual = new HashMap<>();
-
+    public static void main(String[] args) {
+        
+    }
     public double calcularISR(double precioCompra, double precioVenta, Date fechaCompra){
         iniMapa();
         double tiempo_desde_compra = aniosDesdeCompra(fechaCompra, new Date());

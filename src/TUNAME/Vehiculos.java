@@ -1434,13 +1434,14 @@ public class Vehiculos extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVentaMouseClicked
     private void ventasCalc(){
         calculoISR cIs = new calculoISR();
-        Date compDate = contVeh.consultarFecha(1);
+        Date compDate = contVeh.consultarFecha(Integer.parseInt(TablaVehiculos.getValueAt(TablaVehiculos.getSelectedRow(), 0).toString()));
         double precioCompra = Double.parseDouble(TablaVehiculos.getValueAt(TablaVehiculos.getSelectedRow(), 4).toString());
         double precioVenta = Double.parseDouble(TablaVehiculos.getValueAt(TablaVehiculos.getSelectedRow(), 7).toString());
 
 
         lblCLN.setText(String.valueOf(precioCompra));//Precio Compra
         lblIngresos.setText(String.valueOf(precioVenta)); // precio venta
+        System.out.println(cIs.calcularISR(precioCompra, precioVenta, compDate));
         lblPromedio.setText(Double.toString(cIs.calcularISR(precioCompra, precioVenta, compDate))); //isr
         lblAniosTrans.setText(String.valueOf(cIs.aniosDesdeCompra(compDate, new Date())));//Años transcurridos
         
