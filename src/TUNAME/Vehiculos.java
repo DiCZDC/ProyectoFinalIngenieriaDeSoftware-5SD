@@ -146,7 +146,7 @@ public class Vehiculos extends javax.swing.JFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         TablaVehiculos = new javax.swing.JTable();
         jLabel45 = new javax.swing.JLabel();
-        cboFecha = new TUNAME.panelCalendario();
+        panelCalendario1 = new TUNAME.panelCalendario();
         PLTenencias_2 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jScrollPane7 = new javax.swing.JScrollPane();
@@ -1177,7 +1177,7 @@ public class Vehiculos extends javax.swing.JFrame {
         jLabel45.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/calendar.png"))); // NOI18N
         jLabel45.setText(" Fecha de Compra");
         jPanel2.add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 520, 180, 40));
-        jPanel2.add(cboFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 530, -1, -1));
+        jPanel2.add(panelCalendario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 530, 580, -1));
 
         PLVehiculos.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1300, 590));
 
@@ -1630,7 +1630,6 @@ public class Vehiculos extends javax.swing.JFrame {
         
         for(Vehiculo i: contVeh.getVehiculos()){
             String [] actVal ={String.valueOf(i.getId_vehiculo()),i.getModelo(),i.getVariante(),String.valueOf(i.getAnio()),Double.toString(i.getPrecio_compra()),Long.toString(i.getKilometraje()),i.getTipo_gasolina(),Double.toString(i.getPrecio_venta())};
-            System.out.println(actVal);
             modelo.addRow(actVal);
         }
         
@@ -1748,7 +1747,6 @@ public class Vehiculos extends javax.swing.JFrame {
     private javax.swing.JLabel btnVenta;
     private javax.swing.JLabel btnVentaA;
     private javax.swing.JComboBox<String> cboDescuento;
-    private TUNAME.panelCalendario cboFecha;
     private javax.swing.JComboBox<String> cboGasolina;
     private javax.swing.JComboBox<String> cboTenencia;
     private javax.swing.JLabel jLabel1;
@@ -1802,6 +1800,7 @@ public class Vehiculos extends javax.swing.JFrame {
     private javax.swing.JLabel lblTextoMorado2;
     private javax.swing.JLabel lblTextoMorado3;
     private javax.swing.JLabel lblTextoMorado4;
+    private TUNAME.panelCalendario panelCalendario1;
     private javax.swing.JPanel pnCrudVehiculos;
     private javax.swing.JTextField txtAmaterno;
     private javax.swing.JTextField txtAnio;

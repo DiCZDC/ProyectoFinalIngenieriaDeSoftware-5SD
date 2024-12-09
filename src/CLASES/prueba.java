@@ -4,6 +4,8 @@
  */
 package CLASES;
 
+import CLASES.*;
+
 /**
  *
  * @author raulc

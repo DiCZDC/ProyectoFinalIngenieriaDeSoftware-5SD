@@ -2140,10 +2140,10 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="TUNAME.panelCalendario" name="cboFecha">
+                    <Component class="TUNAME.panelCalendario" name="panelCalendario1">
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="220" y="530" width="-1" height="-1"/>
+                          <AbsoluteConstraints x="220" y="530" width="580" height="-1"/>
                         </Constraint>
                       </Constraints>
                     </Component>

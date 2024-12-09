@@ -5,7 +5,7 @@
 package CLASES;
 
 
-import CONEXION.Conexion;
+import CONEXION.*;
 import java.util.ArrayList;
 import java.sql.*;
 /**
