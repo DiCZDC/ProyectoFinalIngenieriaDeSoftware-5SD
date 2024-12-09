@@ -13,7 +13,7 @@ import java.sql.*;
  * @author raulc
  */
 public class controladorVehiculos {
-    ArrayList<Vehiculo> vehiculos;
+    private ArrayList<Vehiculo> vehiculos;
     Connection cn;
     
     
@@ -95,6 +95,7 @@ public class controladorVehiculos {
             pstmt.setDouble(7,v.getPrecio_venta());
             pstmt.setDate(8, new java.sql.Date(v.getFecha_compra().getTime()) );
             pstmt.setBoolean(9,v.getTenencia());
+            pstmt.setInt(10, v.getId_vehiculo());
             pstmt.executeUpdate();
             this.ActualizarVehiculos();
             return true;
