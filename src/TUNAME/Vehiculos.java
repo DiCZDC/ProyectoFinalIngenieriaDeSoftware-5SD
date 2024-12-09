@@ -932,6 +932,11 @@ public class Vehiculos extends javax.swing.JFrame {
         btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/rental-car.png"))); // NOI18N
         btnAgregar.setText("  Agregar");
         btnAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAgregar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnAgregarKeyPressed(evt);
+            }
+        });
         jPanel2.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 370, 130, 60));
 
         btnDocumentacion.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -973,6 +978,11 @@ public class Vehiculos extends javax.swing.JFrame {
         txtModelo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtModeloMouseClicked(evt);
+            }
+        });
+        txtModelo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtModeloActionPerformed(evt);
             }
         });
         txtModelo.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1407,6 +1417,13 @@ public class Vehiculos extends javax.swing.JFrame {
 
     private void txtModeloMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtModeloMouseClicked
         // TODO add your handling code here:
+        if(txtModelo.getText().equals("Modelo")){
+            txtModelo.setText("");
+            txtModelo.setForeground(Color.black);
+        }
+        
+        
+        
     }//GEN-LAST:event_txtModeloMouseClicked
 
     private void txtModeloKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtModeloKeyTyped
@@ -1420,10 +1437,16 @@ public class Vehiculos extends javax.swing.JFrame {
 
     private void txtVarianteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtVarianteMouseClicked
         // TODO add your handling code here:
+        
+        if(txtVariante.getText().equals("Variante")){
+            txtVariante.setText("");
+            txtVariante.setForeground(Color.black);
+        }
     }//GEN-LAST:event_txtVarianteMouseClicked
 
     private void txtVarianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtVarianteActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_txtVarianteActionPerformed
 
     private void txtVarianteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtVarianteKeyTyped
@@ -1432,6 +1455,10 @@ public class Vehiculos extends javax.swing.JFrame {
 
     private void txtAnioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtAnioMouseClicked
         // TODO add your handling code here:
+        if(txtAnio.getText().equals("Año")){
+            txtAnio.setText("");
+            txtAnio.setForeground(Color.black);
+        }
     }//GEN-LAST:event_txtAnioMouseClicked
 
     private void txtAnioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAnioActionPerformed
@@ -1444,6 +1471,10 @@ public class Vehiculos extends javax.swing.JFrame {
 
     private void txtKilometrajeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtKilometrajeMouseClicked
         // TODO add your handling code here:
+        if(txtKilometraje.getText().equals("Kilometraje")){
+            txtKilometraje.setText("");
+            txtKilometraje.setForeground(Color.black);
+        }
     }//GEN-LAST:event_txtKilometrajeMouseClicked
 
     private void txtKilometrajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtKilometrajeActionPerformed
@@ -1456,6 +1487,10 @@ public class Vehiculos extends javax.swing.JFrame {
 
     private void txtPrecio_compraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtPrecio_compraMouseClicked
         // TODO add your handling code here:
+        if(txtPrecio_compra.getText().equals("Precio de Compra")){
+            txtPrecio_compra.setText("");
+            txtPrecio_compra.setForeground(Color.black);
+        }
     }//GEN-LAST:event_txtPrecio_compraMouseClicked
 
     private void txtPrecio_compraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrecio_compraActionPerformed
@@ -1468,6 +1503,10 @@ public class Vehiculos extends javax.swing.JFrame {
 
     private void txtPrecio_ventaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtPrecio_ventaMouseClicked
         // TODO add your handling code here:
+        if(txtPrecio_venta.getText().equals("Precio de Venta")){
+            txtPrecio_venta.setText("");
+            txtPrecio_venta.setForeground(Color.black);
+        }
     }//GEN-LAST:event_txtPrecio_ventaMouseClicked
 
     private void txtPrecio_ventaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrecio_ventaActionPerformed
@@ -1614,6 +1653,19 @@ public class Vehiculos extends javax.swing.JFrame {
         
     }
     
+
+    private void btnAgregarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnAgregarKeyPressed
+        // TODO add your handling code here:
+        
+        
+        
+    }//GEN-LAST:event_btnAgregarKeyPressed
+
+    private void txtModeloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtModeloActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_txtModeloActionPerformed
+
     
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
