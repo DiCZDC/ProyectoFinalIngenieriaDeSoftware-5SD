@@ -4,8 +4,11 @@ import Metodos.saveImage;
 import Metodos.openImage;
 import TUNAME.*;
 import CLASES.*;
+import Calculo.calculoISR;
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.Date;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /*
@@ -78,7 +81,7 @@ public class Vehiculos extends javax.swing.JFrame {
         lblNombreA6 = new javax.swing.JLabel();
         lblNombreA = new javax.swing.JLabel();
         lblNombreA7 = new javax.swing.JLabel();
-        lblPromedio1 = new javax.swing.JLabel();
+        lblAniosTrans = new javax.swing.JLabel();
         lblNombreA8 = new javax.swing.JLabel();
         btnVentaA = new javax.swing.JLabel();
         btnCancelarV = new javax.swing.JLabel();
@@ -437,11 +440,11 @@ public class Vehiculos extends javax.swing.JFrame {
         lblNombreA7.setText(" Impuestos agregados");
         jPanel3.add(lblNombreA7, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 270, 250, -1));
 
-        lblPromedio1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblPromedio1.setForeground(new java.awt.Color(54, 33, 89));
-        lblPromedio1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblPromedio1.setText("jLabel2");
-        jPanel3.add(lblPromedio1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 320, 100, -1));
+        lblAniosTrans.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblAniosTrans.setForeground(new java.awt.Color(54, 33, 89));
+        lblAniosTrans.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblAniosTrans.setText("jLabel2");
+        jPanel3.add(lblAniosTrans, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 320, 100, -1));
 
         lblNombreA8.setFont(new java.awt.Font("Segoe UI", 1, 19)); // NOI18N
         lblNombreA8.setForeground(new java.awt.Color(54, 33, 89));
@@ -454,6 +457,11 @@ public class Vehiculos extends javax.swing.JFrame {
         btnVentaA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/new-car.png"))); // NOI18N
         btnVentaA.setText(" Vender");
         btnVentaA.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnVentaA.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnVentaAMouseClicked(evt);
+            }
+        });
         jPanel3.add(btnVentaA, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 240, 110, 60));
 
         btnCancelarV.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -1404,10 +1412,22 @@ public class Vehiculos extends javax.swing.JFrame {
     private void btnVentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVentaMouseClicked
         JVentas.setSize(1019, 436);
         JVentas.setLocationRelativeTo(null);
-
+        ventasCalc();
         JVentas.setVisible(rootPaneCheckingEnabled);
     }//GEN-LAST:event_btnVentaMouseClicked
+    private void ventasCalc(){
+        calculoISR cIs = new calculoISR();
+        Date compDate = contVeh.consultarFecha(1);
+        double precioCompra = Double.parseDouble(TablaVehiculos.getValueAt(TablaVehiculos.getSelectedRow(), 4).toString());
+        double precioVenta = Double.parseDouble(TablaVehiculos.getValueAt(TablaVehiculos.getSelectedRow(), 7).toString());
 
+
+        lblCLN.setText(String.valueOf(precioCompra));//Precio Compra
+        lblIngresos.setText(String.valueOf(precioVenta)); // precio venta
+        lblPromedio.setText(Double.toString(cIs.calcularISR(precioCompra, precioVenta, compDate))); //isr
+        lblAniosTrans.setText(String.valueOf(cIs.aniosDesdeCompra(compDate, new Date())));//Años transcurridos
+        
+    }
     private void btnDocumentacionCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDocumentacionCMouseClicked
         JConsulta_Documentacion.setSize(440,590);
         JConsulta_Documentacion.setLocationRelativeTo(null);
@@ -1678,6 +1698,11 @@ public class Vehiculos extends javax.swing.JFrame {
         
     }//GEN-LAST:event_txtModeloActionPerformed
 
+    private void btnVentaAMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVentaAMouseClicked
+        JOptionPane.showMessageDialog( null, "Venta completada correctamente");
+        btnCancelarVMouseClicked(evt);
+    }//GEN-LAST:event_btnVentaAMouseClicked
+
     
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -1796,6 +1821,7 @@ public class Vehiculos extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JLabel lblAniosTrans;
     private javax.swing.JLabel lblCLN;
     private javax.swing.JLabel lblIngresos;
     private javax.swing.JLabel lblNombreA;
@@ -1807,7 +1833,6 @@ public class Vehiculos extends javax.swing.JFrame {
     private javax.swing.JLabel lblNombreA7;
     private javax.swing.JLabel lblNombreA8;
     private javax.swing.JLabel lblPromedio;
-    private javax.swing.JLabel lblPromedio1;
     private javax.swing.JLabel lblSaludito;
     private javax.swing.JLabel lblTextoMorado1;
     private javax.swing.JLabel lblTextoMorado2;
