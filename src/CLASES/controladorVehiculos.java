@@ -23,7 +23,7 @@ public class controladorVehiculos {
     
     public boolean ActualizarVehiculos(){
         vehiculos.clear();
-        String query = "select * from vehiculo Order by id_vehiculo ";
+        String query = "select * from vehiculo Order by id_vehiculo asc";
         try {
             cn = Conexion.conectar();
             PreparedStatement pstmt = cn.prepareStatement(query);
