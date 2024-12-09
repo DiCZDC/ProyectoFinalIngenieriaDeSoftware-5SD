@@ -1237,6 +1237,11 @@ public class Vehiculos extends javax.swing.JFrame {
         btnTenencia_P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/file.png"))); // NOI18N
         btnTenencia_P.setText("  Tenencia Pagada");
         btnTenencia_P.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnTenencia_P.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnTenencia_PMouseClicked(evt);
+            }
+        });
         jPanel7.add(btnTenencia_P, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 350, 350, 60));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/logo.jpg"))); // NOI18N
@@ -1311,37 +1316,38 @@ public class Vehiculos extends javax.swing.JFrame {
         PLautos.setBackground(new Color(60,60,60));
     }//GEN-LAST:event_PLautosMouseMoved
     private int selectedRow_TVehiculos(){
+        
         return Integer.parseInt(TablaVehiculos.getValueAt(TablaVehiculos.getSelectedRow(), 0).toString());
     }
     private void btnFacturaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFacturaMouseClicked
-        //tablaVentas.getValueAt(tablaVentas.getSelectedRow(),0).toString()
-        new saveImage().selectImage("Factura",1); // Añadir getIDCarro()
-        System.out.println(TablaVehiculos.getValueAt(TablaVehiculos.getSelectedRow(), 0).toString());
+        //System.out.println(selectedRow_TVehiculos());
+        new saveImage().selectImage("Factura",selectedRow_TVehiculos()); // Añadir getIDCarro()
+
     }//GEN-LAST:event_btnFacturaMouseClicked
 
     private void btnTenenciaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTenenciaMouseClicked
-        new saveImage().selectImage("Tenencia", 1); // Añadir getIDCarro()
+        new saveImage().selectImage("Tenencia", selectedRow_TVehiculos()); // Añadir getIDCarro()
     }//GEN-LAST:event_btnTenenciaMouseClicked
 
     private void btnTarjetaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTarjetaMouseClicked
-        new saveImage().selectImage("Tarjeta", 1); // Añadir getIDCarro()
+        new saveImage().selectImage("Tarjeta", selectedRow_TVehiculos()); // Añadir getIDCarro()
     }//GEN-LAST:event_btnTarjetaMouseClicked
 
     private void btnContratoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnContratoMouseClicked
-        new saveImage().selectImage("Contrato", 1); // Añadir getIDCarro()
+        new saveImage().selectImage("Contrato", selectedRow_TVehiculos()); // Añadir getIDCarro()
     }//GEN-LAST:event_btnContratoMouseClicked
 
     private void btnIDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIDMouseClicked
-        new saveImage().selectImage("ID", 1); // Añadir getIDCarro()
+        new saveImage().selectImage("ID", selectedRow_TVehiculos()); // Añadir getIDCarro()
     }//GEN-LAST:event_btnIDMouseClicked
 
     private void btnMantenimientoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMantenimientoMouseClicked
-        new saveImage().selectImage("Mantenimiento", 1); // Añadir getIDCarro()
+        new saveImage().selectImage("Mantenimiento", selectedRow_TVehiculos()); // Añadir getIDCarro()
     }//GEN-LAST:event_btnMantenimientoMouseClicked
 
     private void btnTenencia_CMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTenencia_CMouseClicked
         try {
-            new openImage().buscar("Tenencia", 1);            
+            new openImage().buscar("Tenencia", selectedRow_TVehiculos());            
         } catch (Exception e) {
         }
 
@@ -1349,14 +1355,14 @@ public class Vehiculos extends javax.swing.JFrame {
 
     private void btnCirculacion_CMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCirculacion_CMouseClicked
         try {
-            new openImage().buscar("Tarjeta", 1);            
+            new openImage().buscar("Tarjeta", selectedRow_TVehiculos());            
         } catch (Exception e) {
         }
     }//GEN-LAST:event_btnCirculacion_CMouseClicked
 
     private void btnContrato_CMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnContrato_CMouseClicked
         try {
-            new openImage().buscar("Contrato", 1);            
+            new openImage().buscar("Contrato", selectedRow_TVehiculos());            
         } catch (Exception e) {
         }
     }//GEN-LAST:event_btnContrato_CMouseClicked
@@ -1370,14 +1376,14 @@ public class Vehiculos extends javax.swing.JFrame {
 
     private void btnRegistro_CMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistro_CMouseClicked
         try {
-            new openImage().buscar("Mantenimiento", 1);            
+            new openImage().buscar("Mantenimiento", selectedRow_TVehiculos());            
         } catch (Exception e) {
         }
     }//GEN-LAST:event_btnRegistro_CMouseClicked
 
     private void btnFactura_CMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFactura_CMouseClicked
         try {
-            new openImage().buscar("Factura", 1);            
+            new openImage().buscar("Factura", selectedRow_TVehiculos());            
         } catch (Exception e) {
         }    }//GEN-LAST:event_btnFactura_CMouseClicked
 
@@ -1616,6 +1622,10 @@ public class Vehiculos extends javax.swing.JFrame {
     private void btnCancelarVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarVMouseClicked
        JVentas.dispose();
     }//GEN-LAST:event_btnCancelarVMouseClicked
+
+    private void btnTenencia_PMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTenencia_PMouseClicked
+        changeTenencia();
+    }//GEN-LAST:event_btnTenencia_PMouseClicked
     
     private void updateTablaVehiculos(){
         contVeh.ActualizarVehiculos();
@@ -1645,11 +1655,14 @@ public class Vehiculos extends javax.swing.JFrame {
         
         TablaTenencias.setModel(modelo);
         for(Vehiculo i: contVeh.getVehiculos()){
-            String [] actVal ={String.valueOf(i.getId_vehiculo()),i.getModelo(),Boolean.toString(i.getTenencia())};
+            String [] actVal ={String.valueOf(i.getId_vehiculo()),i.getModelo(),"Sin pagar"};
             if(!i.getTenencia())
                 modelo.addRow(actVal);
-        }
-        
+        } 
+    }
+    private void changeTenencia(){
+        contVeh.tenenciaPagada(Integer.parseInt(TablaTenencias.getValueAt(TablaTenencias.getSelectedRow(), 0).toString()));
+        updateTablaTenencias();
     }
     
 
