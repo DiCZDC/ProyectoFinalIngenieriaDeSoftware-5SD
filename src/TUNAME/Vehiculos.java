@@ -1301,37 +1301,38 @@ public class Vehiculos extends javax.swing.JFrame {
         PLautos.setBackground(new Color(60,60,60));
     }//GEN-LAST:event_PLautosMouseMoved
     private int selectedRow_TVehiculos(){
+        
         return Integer.parseInt(TablaVehiculos.getValueAt(TablaVehiculos.getSelectedRow(), 0).toString());
     }
     private void btnFacturaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFacturaMouseClicked
-        //tablaVentas.getValueAt(tablaVentas.getSelectedRow(),0).toString()
-        new saveImage().selectImage("Factura",1); // Añadir getIDCarro()
-        System.out.println(TablaVehiculos.getValueAt(TablaVehiculos.getSelectedRow(), 0).toString());
+        //System.out.println(selectedRow_TVehiculos());
+        new saveImage().selectImage("Factura",selectedRow_TVehiculos()); // Añadir getIDCarro()
+
     }//GEN-LAST:event_btnFacturaMouseClicked
 
     private void btnTenenciaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTenenciaMouseClicked
-        new saveImage().selectImage("Tenencia", 1); // Añadir getIDCarro()
+        new saveImage().selectImage("Tenencia", selectedRow_TVehiculos()); // Añadir getIDCarro()
     }//GEN-LAST:event_btnTenenciaMouseClicked
 
     private void btnTarjetaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTarjetaMouseClicked
-        new saveImage().selectImage("Tarjeta", 1); // Añadir getIDCarro()
+        new saveImage().selectImage("Tarjeta", selectedRow_TVehiculos()); // Añadir getIDCarro()
     }//GEN-LAST:event_btnTarjetaMouseClicked
 
     private void btnContratoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnContratoMouseClicked
-        new saveImage().selectImage("Contrato", 1); // Añadir getIDCarro()
+        new saveImage().selectImage("Contrato", selectedRow_TVehiculos()); // Añadir getIDCarro()
     }//GEN-LAST:event_btnContratoMouseClicked
 
     private void btnIDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIDMouseClicked
-        new saveImage().selectImage("ID", 1); // Añadir getIDCarro()
+        new saveImage().selectImage("ID", selectedRow_TVehiculos()); // Añadir getIDCarro()
     }//GEN-LAST:event_btnIDMouseClicked
 
     private void btnMantenimientoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMantenimientoMouseClicked
-        new saveImage().selectImage("Mantenimiento", 1); // Añadir getIDCarro()
+        new saveImage().selectImage("Mantenimiento", selectedRow_TVehiculos()); // Añadir getIDCarro()
     }//GEN-LAST:event_btnMantenimientoMouseClicked
 
     private void btnTenencia_CMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTenencia_CMouseClicked
         try {
-            new openImage().buscar("Tenencia", 1);            
+            new openImage().buscar("Tenencia", selectedRow_TVehiculos());            
         } catch (Exception e) {
         }
 
@@ -1339,14 +1340,14 @@ public class Vehiculos extends javax.swing.JFrame {
 
     private void btnCirculacion_CMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCirculacion_CMouseClicked
         try {
-            new openImage().buscar("Tarjeta", 1);            
+            new openImage().buscar("Tarjeta", selectedRow_TVehiculos());            
         } catch (Exception e) {
         }
     }//GEN-LAST:event_btnCirculacion_CMouseClicked
 
     private void btnContrato_CMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnContrato_CMouseClicked
         try {
-            new openImage().buscar("Contrato", 1);            
+            new openImage().buscar("Contrato", selectedRow_TVehiculos());            
         } catch (Exception e) {
         }
     }//GEN-LAST:event_btnContrato_CMouseClicked
@@ -1360,14 +1361,14 @@ public class Vehiculos extends javax.swing.JFrame {
 
     private void btnRegistro_CMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistro_CMouseClicked
         try {
-            new openImage().buscar("Mantenimiento", 1);            
+            new openImage().buscar("Mantenimiento", selectedRow_TVehiculos());            
         } catch (Exception e) {
         }
     }//GEN-LAST:event_btnRegistro_CMouseClicked
 
     private void btnFactura_CMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFactura_CMouseClicked
         try {
-            new openImage().buscar("Factura", 1);            
+            new openImage().buscar("Factura", selectedRow_TVehiculos());            
         } catch (Exception e) {
         }    }//GEN-LAST:event_btnFactura_CMouseClicked
 
