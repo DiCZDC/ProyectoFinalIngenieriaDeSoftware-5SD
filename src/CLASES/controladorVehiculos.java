@@ -23,7 +23,7 @@ public class controladorVehiculos {
     
     public boolean ActualizarVehiculos(){
         vehiculos.clear();
-        String query = "SELECT * FROM vehiculo";
+        String query = "select * from vehiculo Order by id_vehiculo ";
         try {
             cn = Conexion.conectar();
             PreparedStatement pstmt = cn.prepareStatement(query);
@@ -95,6 +95,23 @@ public class controladorVehiculos {
             pstmt.setDouble(7,v.getPrecio_venta());
             pstmt.setDate(8, new java.sql.Date(v.getFecha_compra().getTime()) );
             pstmt.setBoolean(9,v.getTenencia());
+            pstmt.executeUpdate();
+            this.ActualizarVehiculos();
+            return true;
+            
+        }catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    public boolean tenenciaPagada( int id_vehiculo){
+        
+        String query = "Update vehiculo set tenencia = true WHERE id_vehiculo = ?";
+        //"UPDATE vehiculo SET modelo = ?, variante = ?, anio = ?, precio_compra = ?, kilometraje = ?, tipo_gasolina = ?, precio_venta = ?, fecha_compra = ?, tenencia = ? WHERE id_vehiculo = ?";
+        try {
+            cn = Conexion.conectar();
+            PreparedStatement pstmt = cn.prepareStatement(query);
+            pstmt.setInt(1,id_vehiculo);
             pstmt.executeUpdate();
             this.ActualizarVehiculos();
             return true;

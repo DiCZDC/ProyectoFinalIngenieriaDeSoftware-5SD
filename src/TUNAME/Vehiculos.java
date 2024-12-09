@@ -1227,6 +1227,11 @@ public class Vehiculos extends javax.swing.JFrame {
         btnTenencia_P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/file.png"))); // NOI18N
         btnTenencia_P.setText("  Tenencia Pagada");
         btnTenencia_P.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnTenencia_P.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnTenencia_PMouseClicked(evt);
+            }
+        });
         jPanel7.add(btnTenencia_P, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 350, 350, 60));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/logo.jpg"))); // NOI18N
@@ -1578,6 +1583,10 @@ public class Vehiculos extends javax.swing.JFrame {
     private void btnCancelarVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarVMouseClicked
        JVentas.dispose();
     }//GEN-LAST:event_btnCancelarVMouseClicked
+
+    private void btnTenencia_PMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTenencia_PMouseClicked
+        changeTenencia();
+    }//GEN-LAST:event_btnTenencia_PMouseClicked
     
     private void updateTablaVehiculos(){
         contVeh.ActualizarVehiculos();
@@ -1592,7 +1601,6 @@ public class Vehiculos extends javax.swing.JFrame {
         
         for(Vehiculo i: contVeh.getVehiculos()){
             String [] actVal ={String.valueOf(i.getId_vehiculo()),i.getModelo(),i.getVariante(),String.valueOf(i.getAnio()),Double.toString(i.getPrecio_compra()),Long.toString(i.getKilometraje()),i.getTipo_gasolina(),Double.toString(i.getPrecio_venta())};
-            System.out.println(actVal);
             modelo.addRow(actVal);
         }
         
@@ -1608,11 +1616,14 @@ public class Vehiculos extends javax.swing.JFrame {
         
         TablaTenencias.setModel(modelo);
         for(Vehiculo i: contVeh.getVehiculos()){
-            String [] actVal ={String.valueOf(i.getId_vehiculo()),i.getModelo(),Boolean.toString(i.getTenencia())};
+            String [] actVal ={String.valueOf(i.getId_vehiculo()),i.getModelo(),"Sin pagar"};
             if(!i.getTenencia())
                 modelo.addRow(actVal);
-        }
-        
+        } 
+    }
+    private void changeTenencia(){
+        contVeh.tenenciaPagada(Integer.parseInt(TablaTenencias.getValueAt(TablaTenencias.getSelectedRow(), 0).toString()));
+        updateTablaTenencias();
     }
     
     

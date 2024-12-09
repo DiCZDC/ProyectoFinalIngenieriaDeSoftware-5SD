@@ -34,7 +34,7 @@ public class Vehiculo{
         this.fecha_compra = fecha_compra;
         this.tenencia = tenencia;
     }
-
+    
 
     
     
