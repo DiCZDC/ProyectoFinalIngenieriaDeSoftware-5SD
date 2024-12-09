@@ -109,5 +109,13 @@ public class controladorVehiculos {
         return vehiculos;
     }
     
-    
+    public ArrayList<Vehiculo> getVehiculosNoTenencia(){
+        ArrayList<Vehiculo> temp = new ArrayList<>();
+        for(Vehiculo carro:vehiculos){
+            if(!carro.getTenencia()){
+                temp.add(carro);
+            }
+        }
+        return temp;
+    }
 }
