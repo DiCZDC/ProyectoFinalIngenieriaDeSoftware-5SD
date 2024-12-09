@@ -83,6 +83,7 @@ public class controladorVehiculos {
     
     public boolean editarVehiculo(Vehiculo v){
         String query = "UPDATE vehiculo SET modelo = ?, variante = ?, anio = ?, precio_compra = ?, kilometraje = ?, tipo_gasolina = ?, precio_venta = ?, fecha_compra = ?, tenencia = ? WHERE id_vehiculo = ?";
+        System.out.println(v.getId_vehiculo());
         try {
             cn = Conexion.conectar();
             PreparedStatement pstmt = cn.prepareStatement(query);

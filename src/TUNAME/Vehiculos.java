@@ -4,6 +4,7 @@ import Metodos.saveImage;
 import Metodos.openImage;
 import TUNAME.*;
 import CLASES.*;
+import CLASES.controladorVehiculos;
 import Calculo.calculoISR;
 import java.awt.Color;
 import java.text.ParseException;
@@ -34,11 +35,11 @@ public class Vehiculos extends javax.swing.JFrame {
     /**
      * Creates new form si
      */
-    controladorVehiculos contVeh = new controladorVehiculos();
+    controladorVehiculos contVeh ;
     public Vehiculos() {
         initComponents();
+        contVeh = new controladorVehiculos();
         updateTablaVehiculos();
-
     }
 
     /**
@@ -1768,7 +1769,6 @@ public class Vehiculos extends javax.swing.JFrame {
         ve.setKilometraje(Long.parseLong((String)modelo.getValueAt(seleccion, 5)) );
         ve.setTipo_gasolina((String) modelo.getValueAt(seleccion, 6));
         ve.setPrecio_venta(Double.parseDouble((String)modelo.getValueAt(seleccion, 7)));
-
         contVeh.editarVehiculo(ve);
         updateTablaVehiculos();
         
