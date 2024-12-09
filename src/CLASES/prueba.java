@@ -16,9 +16,6 @@ public class prueba {
       
             System.out.println(cv.getVehiculos().get(i).getModelo());
         }
-       
-        
-        
         
     }
 }
