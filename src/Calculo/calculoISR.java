@@ -16,14 +16,14 @@ public class calculoISR {
         double costo_disminuir = tiempo_desde_compra*.2;
         double costo_neto = precioCompra - (precioCompra*costo_disminuir);
         if(tiempo_desde_compra >=5)
-            return 0;
+            costo_neto = 0;
         double costo_neto_act = costo_neto*aumentoInflacion(fechaCompra, new Date());
         
         double utilidad = precioVenta - costo_neto_act;
         double uma = 39606.36*3;
         if(utilidad <= uma)
             return 0;
-        return Math.round((utilidad-uma)*100.00)/100.00;
+        return Math.round(((utilidad-uma)*.2)*100.00)/100.00;
     }
     
     public double  aniosDesdeCompra(Date fechaCompra, Date fechaVenta){

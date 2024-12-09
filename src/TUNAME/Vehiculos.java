@@ -1441,7 +1441,6 @@ public class Vehiculos extends javax.swing.JFrame {
 
         lblCLN.setText(String.valueOf(precioCompra));//Precio Compra
         lblIngresos.setText(String.valueOf(precioVenta)); // precio venta
-        System.out.println(cIs.calcularISR(precioCompra, precioVenta, compDate));
         lblPromedio.setText(Double.toString(cIs.calcularISR(precioCompra, precioVenta, compDate))); //isr
         lblAniosTrans.setText(String.valueOf(cIs.aniosDesdeCompra(compDate, new Date())));//Años transcurridos
         
